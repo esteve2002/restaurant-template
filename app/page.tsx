@@ -1,69 +1,53 @@
+import Link from "next/link";
 import Image from "next/image";
+import FoodScene from "@/components/restaurant/FoodScene";
+
+const TABLE_IMAGE = "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1500&q=85";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="landing-page">
+      <header className="landing-nav">
+        <Link className="landing-wordmark" href="/">mise<span>.</span></Link>
+        <Link className="landing-nav-link" href="/generate">Crear una propuesta <span aria-hidden="true">↗</span></Link>
+      </header>
+
+      <section className="landing-hero">
+        <div className="landing-copy">
+          <p className="landing-kicker"><span /> DISEÑO DIGITAL PARA HOSTELERÍA</p>
+          <h1>Tu restaurante merece una web que <em>abra el apetito.</em></h1>
+          <p className="landing-description">Convertimos la web que ya tienes en el punto de partida para una experiencia digital más clara, atractiva y hecha a la medida de tu restaurante.</p>
+          <div className="landing-actions">
+            <Link className="landing-primary" href="/generate">Probar con mi restaurante <span aria-hidden="true">↗</span></Link>
+            <span className="landing-action-note">Una URL. Una nueva perspectiva.</span>
+          </div>
+          <div className="landing-proof"><span>01</span><p>Tu identidad, tus platos y tu historia, reunidos en un solo lugar.</p></div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="landing-visual">
+          <Image src={TABLE_IMAGE} alt="Mesa preparada en un restaurante" width={1500} height={1100} priority unoptimized />
+          <div className="landing-food-model">
+            <FoodScene type="tapas" accent="#bd583f" fallbackImage={TABLE_IMAGE} />
+          </div>
+          <div className="landing-photo-caption"><span>UNA EXPERIENCIA A TU MEDIDA</span><strong>Todo empieza<br />con tu historia.</strong></div>
+          <div className="landing-photo-index">M / 01</div>
         </div>
-      </main>
-    </div>
+        <div className="landing-scroll-note">DESLIZA PARA DESCUBRIR <span aria-hidden="true">↓</span></div>
+      </section>
+
+      <section className="landing-process" aria-labelledby="process-heading">
+        <div className="landing-section-heading">
+          <p className="landing-kicker">DE LA WEB ACTUAL A UNA NUEVA IDEA</p>
+          <h2 id="process-heading">Un buen comienzo<br />en tres pasos.</h2>
+        </div>
+        <div className="landing-steps">
+          <article><span>01</span><h3>Comparte tu web</h3><p>Partimos de una página pública para conocer el restaurante y lo que lo hace especial.</p></article>
+          <article><span>02</span><h3>Encontramos lo esencial</h3><p>Organizamos la carta, las imágenes y los datos que ya cuentas a tus clientes.</p></article>
+          <article><span>03</span><h3>Imagina lo que sigue</h3><p>Explora una propuesta visual propia y compárala con tu sitio actual.</p></article>
+        </div>
+      </section>
+
+      <footer className="landing-footer"><Link className="landing-wordmark" href="/">mise<span>.</span></Link><p>Una mejor mesa también se sirve en la web.</p><Link href="/generate">Empezar <span aria-hidden="true">↗</span></Link></footer>
+    </main>
   );
 }
